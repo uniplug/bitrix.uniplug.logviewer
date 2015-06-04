@@ -5,3 +5,5 @@
 - В качестве мониторинга ошибок для менеджера
 
 Модуль работает на основе стандартного функционала Битрикса [AddMessage2Log()](https://dev.1c-bitrix.ru/api_help/main/functions/debug/addmessage2log.php), получая новые данные с помощью технологии AJAX, чем сильно экономит ваше время, делая процесс отладки и разработки более комфортным.
+
+[![Code Climate](https://codeclimate.com/github/uniplug/bitrix.uniplug.logviewer/badges/gpa.svg)](https://codeclimate.com/github/uniplug/bitrix.uniplug.logviewer)
