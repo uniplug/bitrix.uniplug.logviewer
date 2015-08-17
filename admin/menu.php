@@ -8,7 +8,7 @@ return array(
 	'url'         => 'uniplug_logviewer.php?lang=' . LANGUAGE_ID,
 	'text'        => GetMessage('UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE'),
 	'title'       => GetMessage('UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE'),
-	'icon'        => 'up_reviews_menu_icon',
-	'page_icon'   => 'up_reviews_menu_icon',
+	'icon'        => 'uniplug_logviewer_menu_icon',
+	'page_icon'   => 'uniplug_logviewer_menu_icon',
 	'module_id'   => 'uniplug.logviewer',
 );
