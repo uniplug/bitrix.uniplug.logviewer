@@ -22,7 +22,7 @@ class uniplug_logviewer extends CModule {
 	 */
 	public function __construct() {
 		/** @var array $arModuleVersion */
-		include(dirname( __FILE__ ) . '/version.php');
+		include( __DIR__ . '/version.php');
 		$this->MODULE_NAME           = GetMessage( 'UNIPLUG_LOGVIEWER_MODULE_NAME' );
 		$this->MODULE_DESCRIPTION    = GetMessage( 'UNIPLUG_LOGVIEWER_MODULE_DESC' );
 		$this->MODULE_VERSION      	 = $arModuleVersion['VERSION'];

@@ -6,10 +6,9 @@ return array(
 	'section'     => 'uniplug_logviewer',
 	'sort'        => 110,
 	'url'         => 'uniplug_logviewer.php?lang=' . LANGUAGE_ID,
-	'text'        => GetMessage( 'UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE' ),
-	'title'       => GetMessage( 'UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE' ),
+	'text'        => GetMessage('UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE'),
+	'title'       => GetMessage('UNIPLUG_LOGVIEWER_ADMIN_MENU_TITLE'),
 	'icon'        => 'up_reviews_menu_icon',
 	'page_icon'   => 'up_reviews_menu_icon',
 	'module_id'   => 'uniplug.logviewer',
-
-	);
+);
