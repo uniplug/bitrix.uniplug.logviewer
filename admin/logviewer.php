@@ -103,21 +103,21 @@ if (!defined('LOG_FILENAME')) {
 ?>
 	<div class="adm-info-message-wrap adm-info-message-gray">
 		<div class="adm-info-message">
-			<div class="adm-info-message-title">Как это работает?</div>
-			Прочтите <a href="https://dev.1c-bitrix.ru/api_help/main/functions/debug/addmessage2log.php" target="_blank">официальную документацию</a>.
+			<div class="adm-info-message-title"><?= GetMessage('UNIPLUG_LOGVIEWER_HELP1_HEADER') ?></div>
+			<?= GetMessage('UNIPLUG_LOGVIEWER_HELP1_TEXT') ?>
 			<div class="adm-info-message-buttons"></div>
 		</div>
 	</div>
 
 	<div class="adm-info-message-wrap adm-info-message-gray">
 		<div class="adm-info-message">
-			<div class="adm-info-message-title">Нашли ошибку или нужна помощь?</div>
-			<a href="http://uniplug.ru/contacts/" target="_blank">Обратитесь к разработчику</a>.
+			<div class="adm-info-message-title"><?= GetMessage('UNIPLUG_LOGVIEWER_HELP2_HEADER') ?></div>
+			<?= GetMessage('UNIPLUG_LOGVIEWER_HELP2_TEXT') ?>
 			<div class="adm-info-message-buttons"></div>
 		</div>
 	</div>
 
-	<div id="delete_message" style="display:none"><?= \CAdminMessage::ShowNote('Лог-файл удален!') ?></div>
+	<div id="delete_message" style="display:none"><?= \CAdminMessage::ShowNote(GetMessage('UNIPLUG_LOGVIEWER_LOG_DELETED')) ?></div>
 <?if ($_SESSION['error_flag'] == 0):?>
 
 	<?$tabControl->Begin(); ?>
@@ -127,13 +127,13 @@ if (!defined('LOG_FILENAME')) {
 	<? $tabControl->EndTab(); ?>
 
 	<?$tabControl->BeginNextTab(); ?>
-		<h4>Путь к лог-файлу: <?= LOG_FILENAME ?></h4>
+		<h4><?= GetMessage('UNIPLUG_LOGVIEWER_LOG_PATH') ?>: <?= LOG_FILENAME ?></h4>
 		<form method="POST" id="add_to_log" name="add_to_log" action="<?= $APPLICATION->GetCurPage() ?>">
-			<label>Вы можете протестировать работу модуля, отправив произвольный текст в лог:
+			<label><?= GetMessage('UNIPLUG_LOGVIEWER_LOG_TEST') ?>:
 				<br>
 				<textarea id="log_message" cols="66" rows="10" name="log_message"></textarea></label>
 			<br>
-			<input type="submit" value="Отправить в лог">&nbsp&nbsp<input type="button" id="delete_log" value="Удалить лог-файл">
+			<input type="submit" value="<?= GetMessage('UNIPLUG_LOGVIEWER_LOG_TEST_MAKE') ?>">&nbsp;&nbsp;<input type="button" id="delete_log" value="<?= GetMessage('UNIPLUG_LOGVIEWER_LOG_DELETE') ?>">
 
 		</form>
 	<? $tabControl->EndTab(); ?>
