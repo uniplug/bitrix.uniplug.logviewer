@@ -27,7 +27,7 @@ class uniplug_logviewer extends CModule {
 		$this->MODULE_DESCRIPTION    = GetMessage( 'UNIPLUG_LOGVIEWER_MODULE_DESC' );
 		$this->MODULE_VERSION      	 = $arModuleVersion['VERSION'];
 		$this->MODULE_VERSION_DATE   = $arModuleVersion['VERSION_DATE'];
-		$this->PARTNER_NAME          = GetMessage( 'UNIPLUG_LOGVIEWER_MODULE_PARTNER_NAME' );
+		$this->PARTNER_NAME          = GetMessage("UNIPLUG_PARTNER_NAME");;
 		$this->PARTNER_URI           = "http://uniplug.ru/";
 	}
 

@@ -14,4 +14,4 @@ $MESS['UNIPLUG_LOGVIEWER_LOG_PATH'] = 'Путь к лог-файлу';
 $MESS['UNIPLUG_LOGVIEWER_LOG_TEST'] = 'Вы можете протестировать работу модуля, отправив произвольный текст в лог';
 $MESS['UNIPLUG_LOGVIEWER_LOG_TEST_MAKE'] = 'Отправить в лог';
 $MESS['UNIPLUG_LOGVIEWER_LOG_DELETE'] = 'Удалить лог-файл';
-$MESS['UNIPLUG_LOGVIEWER_LOG_TITLE'] = 'Просмотр логов';
+$MESS['UNIPLUG_LOGVIEWER_TITLE'] = 'Просмотр логов';
