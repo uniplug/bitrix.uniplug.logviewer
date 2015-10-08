@@ -87,7 +87,7 @@ $tabControl = new CAdminTabControl('tabControl', $aTabs);
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_admin_after.php');
 
-$APPLICATION->SetTitle('Просмотр логов');
+$APPLICATION->SetTitle(GetMessage('UNIPLUG_LOGVIEWER_TITLE'));
 ?>
 <?
 if (!defined('LOG_FILENAME')) {
