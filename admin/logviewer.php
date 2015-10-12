@@ -19,23 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['type'] == "add_to_log" && ch
 	AddMessage2Log($_POST['log_message'], "uniplug_logviewer");
 }
 
-$file = LOG_FILENAME;
 define('MAX_FILESIZE', 1000);
 
 if (defined('LOG_FILENAME')) {
-
-	if (!isset($_SESSION['offset'])) {
-		if (MAX_FILESIZE > filesize(LOG_FILENAME)) {
-			$_SESSION['offset'] = 0;
-		} else {
-			$_SESSION['offset'] = filesize(LOG_FILENAME) - MAX_FILESIZE;
-		}
-	}
 
 	if ($_POST['type'] == 'delete_log') {
 		unlink(LOG_FILENAME);
 		AddMessage2Log(GetMessage('UNIPLUG_LOGVIEWER_LOG_REMOVED') . ' ' . date('d.m.Y G:i'), 'uniplug_logviewer');
 		$_SESSION['offset'] = 0;
+	} elseif (!isset($_SESSION['offset'])) {
+		if (!file_exists(LOG_FILENAME) || MAX_FILESIZE > filesize(LOG_FILENAME)) {
+			$_SESSION['offset'] = 0;
+		} else {
+			$_SESSION['offset'] = filesize(LOG_FILENAME) - MAX_FILESIZE;
+		}
 	}
 
 
@@ -48,18 +45,18 @@ if (defined('LOG_FILENAME')) {
 			exit();
 		}
 
-		if (fileatime($file) != $_SESSION['access_time']) { //если вдруг оказалось, что кто-то удалил файл, то даты не сойдутся и офсет обнулится
+		if (fileatime(LOG_FILENAME) != $_SESSION['access_time']) { //если вдруг оказалось, что кто-то удалил файл, то даты не сойдутся и офсет обнулится
 			$_SESSION['offset'] = 0;
 		}
 
-		$handle = fopen($file, 'r');
+		$handle = fopen(LOG_FILENAME, 'r');
 		$data = htmlspecialcharsbx(stream_get_contents($handle, -1, $_SESSION['offset']));
 		$data = nl2br($data);
 		echo $data;
 
 		$eof_pos = ftell($handle);
 		$_SESSION['offset'] = $eof_pos;
-		$_SESSION['access_time'] = fileatime($file); // сохраняем в сессию время последнего доступа к файлу - того, который сейчас произошел
+		$_SESSION['access_time'] = fileatime(LOG_FILENAME); // сохраняем в сессию время последнего доступа к файлу - того, который сейчас произошел
 
 		exit();
 	}
@@ -93,10 +90,10 @@ $APPLICATION->SetTitle(GetMessage('UNIPLUG_LOGVIEWER_TITLE'));
 if (!defined('LOG_FILENAME')) {
 	$_SESSION['error_flag'] = 1;
 	echo \CAdminMessage::ShowMessage(GetMessage('UNIPLUG_LOGVIEWER_ERR_NOT_DEFINED'));
-} elseif (!fopen($file, 'r')) {
+} elseif (!fopen(LOG_FILENAME, 'r')) {
 	$_SESSION['error_flag'] = 1;
 	echo \CAdminMessage::ShowMessage(GetMessage('UNIPLUG_LOGVIEWER_ERR_OPEN_LOG'));
-} else {
+} elseif($handle) {
 	fclose($handle);
 }
 
